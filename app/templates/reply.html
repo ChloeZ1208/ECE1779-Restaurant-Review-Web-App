@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h3 class="mb-5 text-center">{{ restaurant_name }}</h3>
+    <form method="POST" action="">
+			{{ form.hidden_tag() }}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-3">Reply to {{ username }}'s comment</legend>
+				<div class="form-group">
+					{{ form.reply.label(class="form-control-label")}}
+          			<textarea class="form-control form-control-lg mb-3" rows="5" placeholder="Write something..."
+							  id="reply" name="reply" required type="text" value=""></textarea>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				{{ form.submit(class="btn btn-outline-warning")}}
+			</div>
+		</form>
+</div>
+
+{% endblock content %}

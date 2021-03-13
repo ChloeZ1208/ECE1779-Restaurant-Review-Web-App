@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="mb-5 text-center">{{ restaurant_name }}</h2>
+    {% if type == 'user' %}
+        <a class="btn btn-link" href="{{url_for('restaurants', type = type)}}">
+            Return restaurants page »</a>
+        <a class="btn btn-link" href="{{url_for('write_reviews', restaurant_name = restaurant_name, type = type)}}">
+            Write a review »</a>
+    {% elif type == 'admin' %}
+        <a class="btn btn-link" href="{{url_for('restaurants', type = type)}}"> Return restaurants page »</a>
+    {% elif type == 'owner' %}
+        <a class="btn btn-link" href="{{url_for('change_password')}}"> Change password »</a>
+    {% endif %}
+    <div class="card-deck d-block d-md-flex">
+        {% for username, stars, comment, reply in comments%}
+            <div class="col-12 col-lg-4">
+                <div class="border rounded">
+                <div class="d-flex border-bottom p-3 w-100 align-items-center">
+                    <h4 class="h5 mr-auto mb-0">{{ username }}</h4>
+                    <p class="badge badge-warning mb-0">Rating: {{ stars }}</p>
+                </div>
+                <div class="card-body pt-3">
+                    <!-- Star Rating -->
+                    <p class=" card-text text-color ">{{ comment }}</p>
+                        {% if reply%}
+                            <p class="card-text">Owner replied: "{{ reply }}"</p>
+                        {% elif type == 'owner' %}
+                            <a class="btn btn-outline-primary" href="{{url_for('reply', username=username, restaurant_name=restaurant_name, type=type)}}">Reply</a>
+                        {% endif %}
+                </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

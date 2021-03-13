@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    {% if type == 'admin' %}
+        <a class="btn btn-link" href="{{url_for('admin', type=type)}}"> Return manager page »</a>
+    {% elif type == 'user' %}
+        <a class="btn btn-link" href="{{url_for('change_password')}}"> Change password »</a>
+    {% endif  %}
+    <div class="row">
+      {% for filename, restaurant_name, rating in restaurants%}
+          <div class="col-lg-3">
+            <div class="card">
+                <img class="card-img-top" src="https://s3.us-east-1.amazonaws.com/restaurantpic1/{{filename}}" alt="">
+              <div class="card-body">
+                <p class="badge badge-warning mb-0">Rating: {{ rating }}</p>
+                <h5 class="card-title">{{ restaurant_name }}</h5>
+                <a class="text-color" href="{{ url_for('reviews', restaurant_name=restaurant_name, type=type) }}">REVIEW</a>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+
+</div>
+{% endblock content %}

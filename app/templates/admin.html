@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <h2 class="mb-5 ">Welcome, Manager!</h2>
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <h5>Create User</h5>
+        <p>Create new user account.</p>
+        <a href="{{url_for('register_user')}}" role="button" class="text-color">Click here</a>
+      </div>
+      <div class="col-md-3 mb-4">
+        <h5>Delete User</h5>
+        <p>Delete all existing users.</p>
+        <a href="{{url_for('delete_users')}}" role="button" class="text-color">Click here</a>
+      </div>
+      <div class="col-md-3 mb-4">
+        <h5>Read reviews</h5>
+        <p>Read all the reviews.</p>
+        <a href="{{url_for('restaurants', type=type)}}" role="button" class="text-color">Read more</a>
+      </div>
+      <div class="col-md-3 mb-4">
+        <h5>Delete restaurants</h5>
+        <p>Delete all restaurants.</p>
+        <a href="{{url_for('delete_restaurants')}}" role="button" class="text-color">Click here</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="content-section">
+		<form method="POST" action="" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Join Today</legend>
+				<div class="form-group">
+					{{ form.email.label(class="form-control-label")}}
+					{{ form.email(class="form-control form-control-lg")}}
+				</div>
+				<div class="form-group">
+					{{ form.password.label(class="form-control-label")}}
+					{{ form.password(class="form-control form-control-lg")}}
+				</div>
+                <div class="form-group">
+					{{ form.confirm_password.label(class="form-control-label")}}
+					{{ form.confirm_password(class="form-control form-control-lg")}}
+				</div>
+				<div class="form-group">
+					{{ form.restaurant_name.label(class="form-control-label")}}
+					{{ form.restaurant_name(class="form-control form-control-lg")}}
+				</div>
+				<div class="input-group">
+  					<div class="input-group-prepend">
+   						 <span class="input-group-text">Upload </span>
+  					</div>
+  					<div class="custom-file">
+    					<input type="file" class="custom-file-input" id="inputGroupFile01"
+      						aria-describedby="inputGroupFileAddon01" name="restaurant_pic">
+    					<label class="custom-file-label" for="inputGroupFile01">Choose restaurant picture</label>
+  					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				{{ form.submit(class="btn btn-outline-warning")}}
+			</div>
+		</form>
+	</div>
+    <div class="border-top pt-3 content-right">
+        <small class="text-muted">
+            Have An Account? <a class="ml-2 text-color" href="{{url_for('login')}}">Sign In</a>
+        </small>
+    </div>
+{% endblock content %}
